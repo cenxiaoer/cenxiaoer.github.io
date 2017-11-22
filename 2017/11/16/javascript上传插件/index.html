@@ -210,11 +210,11 @@ var _hmt = _hmt || [];
     
     <!-- 目录内容 -->
     
-    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:block">
       <span class="btn-bg"></span>
       <span class="btn-text">文章导航</span>
     </p>
-    <div id="toc-article" class="toc-article">
+    <div id="toc-article" class="toc-article" style="display:none">
       <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
       <strong class="toc-title">文章目录</strong>
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#这个插件的UI和体验都非常棒，不过它依赖于下面介绍的jQuery-File-Upload-plugin。"><span class="toc-number">1.</span> <span class="toc-text">这个插件的UI和体验都非常棒，不过它依赖于下面介绍的jQuery File Upload plugin。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个轻量级的文件上传插件，使用起来非常简单，支持jquery，但并不依赖jquery，文档齐全，非常推荐。"><span class="toc-number">2.</span> <span class="toc-text">一个轻量级的文件上传插件，使用起来非常简单，支持jquery，但并不依赖jquery，文档齐全，非常推荐。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这个插件就不用多说了，可能是最火的文件上传插件。功能齐全，文件上传的后端代码都实现了。不过感觉文档很乱，默认UI也不是很好看，如果让我选择我会选择上面的Dropzone-JS。"><span class="toc-number">3.</span> <span class="toc-text">这个插件就不用多说了，可能是最火的文件上传插件。功能齐全，文件上传的后端代码都实现了。不过感觉文档很乱，默认UI也不是很好看，如果让我选择我会选择上面的Dropzone JS。</span></a></li></ol>
@@ -658,14 +658,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
             
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-            
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">buffer</a>
-              </li>
-            
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
             
@@ -674,11 +666,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
             
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+            
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">buffer</a>
               </li>
             
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Javascript上传插件</a>
+              </li>
+            
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
             
               <li class="article-tag-list-item">
