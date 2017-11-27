@@ -44,7 +44,7 @@
   
 
   
-<canvas id="glCanvas" width="300px" height="300px" style="position:fixed;left:0px;bottom:-10px;">
+<canvas id="glCanvas" width="300px" height="300px" style="position:fixed;left:0px;bottom:-10px;z-index: 999999;">
 </canvas>
 <script src='../../live2d.min.js'></script>
 <script src="../../live2d.js"></script>
@@ -89,7 +89,7 @@ window.onload = function () {
 
 <body>
   <div id="container" q-class="show:isCtnShow">
-    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <!--<canvas id="anm-canvas" class="anm-canvas"></canvas>-->
     <div class="left-col" q-class="show:isShow">
       
 <div class="overlay" style="background: #4d4d4d"></div>
@@ -191,9 +191,9 @@ window.onload = function () {
 
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
-          <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
-          </div>
+          <!--<div class="canvas-wrap">-->
+            <!--<canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>-->
+          <!--</div>-->
           <div id="js-content" class="content-ll">
             <article id="post-npm包管理器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -654,15 +654,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
             
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
+              </li>
+            
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
             
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">buffer</a>
-              </li>
-            
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
             
               <li class="article-tag-list-item">
@@ -674,11 +674,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
             
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
-              </li>
-            
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
             
               <li class="article-tag-list-item">
@@ -686,7 +682,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
             
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+            
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>
