@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="成长笔记">
 <meta property="og:description" content="1. 网络爬虫网络爬虫是一种自动获取网页内容的程序,功能如下  发出HTTP请求获取指定URL中的内容 使用jQuery的语法操作网页元素，提取需要的元素 将数据保存到mysql数据库中 建立web服务器显示这些数据 使用计划任务自动执行更新任务 布署项目到阿里云中并配置反向代理">
 <meta property="og:image" content="http://images.cnitblog.com/blog/34483/201301/08090352-4e0aa3fe4f404b3491df384758229be1.png">
-<meta property="og:updated_time" content="2017-11-14T10:58:45.536Z">
+<meta property="og:updated_time" content="2017-11-29T12:57:19.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS爬虫">
 <meta name="twitter:description" content="1. 网络爬虫网络爬虫是一种自动获取网页内容的程序,功能如下  发出HTTP请求获取指定URL中的内容 使用jQuery的语法操作网页元素，提取需要的元素 将数据保存到mysql数据库中 建立web服务器显示这些数据 使用计划任务自动执行更新任务 布署项目到阿里云中并配置反向代理">
@@ -188,8 +188,6 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:825846102@qq.com" title="Email"></a>
-                            
                                 <a class="fa GitHub" href="https://github.com/dearzoe" title="GitHub"></a>
                             
                         </ul>
@@ -266,8 +264,6 @@
             </nav>
             <nav class="header-nav">
                         <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:825846102@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/dearzoe" title="GitHub"></a>
                             
@@ -401,7 +397,7 @@
         <p><span>本文标题:</span><a href="/2017/11/16/JS爬虫/">JS爬虫</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">文哲</a></p>
         <p><span>发布时间:</span>2017-11-16, 10:44:53</p>
-        <p><span>最后更新:</span>2017-11-14, 18:58:45</p>
+        <p><span>最后更新:</span>2017-11-29, 20:57:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/16/JS爬虫/" title="JS爬虫">http://yoursite.com/2017/11/16/JS爬虫/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/11/16/JS爬虫/　　作者: 文哲" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -487,6 +483,20 @@
 
 
     
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2150774';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
 
 
 
@@ -561,9 +571,11 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 29;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                console.log(Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+//                $("#container .left-col").css({"background": backgroundimg, "background-size": "cover"});
             }
         })
     </script>

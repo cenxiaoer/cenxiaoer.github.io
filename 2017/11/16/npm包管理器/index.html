@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://huwenzhe.com/blogIndex/images/npm5.png">
 <meta property="og:image" content="http://huwenzhe.com/blogIndex/images/npm7.png">
 <meta property="og:image" content="http://huwenzhe.com/blogIndex/images/npm6.png">
-<meta property="og:updated_time" content="2017-11-14T10:58:45.605Z">
+<meta property="og:updated_time" content="2017-11-29T12:57:19.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm包管理器发布">
 <meta name="twitter:description" content="npm包管理器一直是经常用的，上面有各种大神写的工具包然而我们自己却很少发布包；以下就整理一下发布包的基本方法;">
@@ -195,8 +195,6 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:825846102@qq.com" title="Email"></a>
-                            
                                 <a class="fa GitHub" href="https://github.com/dearzoe" title="GitHub"></a>
                             
                         </ul>
@@ -273,8 +271,6 @@
             </nav>
             <nav class="header-nav">
                         <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:825846102@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/dearzoe" title="GitHub"></a>
                             
@@ -353,7 +349,7 @@
         <p><span>本文标题:</span><a href="/2017/11/16/npm包管理器/">npm包管理器发布</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">文哲</a></p>
         <p><span>发布时间:</span>2017-11-16, 10:44:53</p>
-        <p><span>最后更新:</span>2017-11-14, 18:58:45</p>
+        <p><span>最后更新:</span>2017-11-29, 20:57:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/16/npm包管理器/" title="npm包管理器发布">http://yoursite.com/2017/11/16/npm包管理器/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/11/16/npm包管理器/　　作者: 文哲" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -439,6 +435,20 @@
 
 
     
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2150774';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
 
 
 
@@ -513,9 +523,11 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 29;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                console.log(Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+//                $("#container .left-col").css({"background": backgroundimg, "background-size": "cover"});
             }
         })
     </script>

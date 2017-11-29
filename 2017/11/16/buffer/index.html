@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/16/buffer/index.html">
 <meta property="og:site_name" content="成长笔记">
 <meta property="og:description" content="最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，而是看现在的趋势，还有是自己的兴趣。js其实我觉得是一门很友好的语言，在踩过基础坑之后，觉得自己应该取扩展一些强数据类型的语言，一是想多了解，二是可以把自己道路拓宽，于是就在想，我应该适合学什么语言，公司现在后台有用java和php，虽然java">
-<meta property="og:updated_time" content="2017-11-27T11:54:51.213Z">
+<meta property="og:updated_time" content="2017-11-29T12:57:19.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把node捡起来之buffer">
 <meta name="twitter:description" content="最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，而是看现在的趋势，还有是自己的兴趣。js其实我觉得是一门很友好的语言，在踩过基础坑之后，觉得自己应该取扩展一些强数据类型的语言，一是想多了解，二是可以把自己道路拓宽，于是就在想，我应该适合学什么语言，公司现在后台有用java和php，虽然java">
@@ -186,8 +186,6 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:825846102@qq.com" title="Email"></a>
-                            
                                 <a class="fa GitHub" href="https://github.com/dearzoe" title="GitHub"></a>
                             
                         </ul>
@@ -264,8 +262,6 @@
             </nav>
             <nav class="header-nav">
                         <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:825846102@qq.com" title="Email"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/dearzoe" title="GitHub"></a>
                             
@@ -390,7 +386,7 @@
         <p><span>本文标题:</span><a href="/2017/11/16/buffer/">把node捡起来之buffer</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">文哲</a></p>
         <p><span>发布时间:</span>2017-11-16, 10:44:53</p>
-        <p><span>最后更新:</span>2017-11-27, 19:54:51</p>
+        <p><span>最后更新:</span>2017-11-29, 20:57:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/16/buffer/" title="把node捡起来之buffer">http://yoursite.com/2017/11/16/buffer/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/11/16/buffer/　　作者: 文哲" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -452,6 +448,20 @@
 
 
 
+    
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2150774';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
     
 
 
@@ -527,9 +537,11 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 29;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                console.log(Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+//                $("#container .left-col").css({"background": backgroundimg, "background-size": "cover"});
             }
         })
     </script>

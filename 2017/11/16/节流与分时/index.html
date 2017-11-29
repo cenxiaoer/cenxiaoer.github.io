@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://huwenzhe.com/blogIndex/images/timg.jpg">
 <meta property="og:image" content="http://huwenzhe.com/blogIndex/images/0.gif">
 <meta property="og:image" content="http://huwenzhe.com/blogIndex/images/1.gif">
-<meta property="og:updated_time" content="2017-11-14T10:58:45.376Z">
+<meta property="og:updated_time" content="2017-11-29T12:57:19.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分时与节流">
 <meta name="twitter:description" content="分时与节流其实是两种场景下的JS性能优化的方案。你尽可以想象成倚天剑和屠龙刀，都是非常锋利好用的东东，起码切个大白菜胡萝卜啥的是肯定没问题的~~">
@@ -190,8 +190,6 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:825846102@qq.com" title="Email"></a>
-                            
                                 <a class="fa GitHub" href="https://github.com/dearzoe" title="GitHub"></a>
                             
                         </ul>
@@ -269,8 +267,6 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:825846102@qq.com" title="Email"></a>
-                            
                                 <a class="fa GitHub" target="_blank" href="https://github.com/dearzoe" title="GitHub"></a>
                             
                         </ul>
@@ -340,7 +336,7 @@
         <p><span>本文标题:</span><a href="/2017/11/16/节流与分时/">分时与节流</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">文哲</a></p>
         <p><span>发布时间:</span>2017-11-16, 10:44:53</p>
-        <p><span>最后更新:</span>2017-11-14, 18:58:45</p>
+        <p><span>最后更新:</span>2017-11-29, 20:57:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/16/节流与分时/" title="分时与节流">http://yoursite.com/2017/11/16/节流与分时/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/11/16/节流与分时/　　作者: 文哲" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -426,6 +422,20 @@
 
 
     
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2150774';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
+    
 
 
 
@@ -500,9 +510,11 @@
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 29;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                console.log(Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+//                $("#container .left-col").css({"background": backgroundimg, "background-size": "cover"});
             }
         })
     </script>
