@@ -110,21 +110,22 @@
         addMask($videoImg[i]);
       }
     };
-    var render = function render(res) {
+    var render = function render(res) {console.log(res)
       var ulTmpl = "";
       for (var j = 0, len2 = res.list.length; j < len2; j++) {
         var data = res.list[j].arr;
         var liTmpl = "";
         for (var i = 0, len = data.link.length; i < len; i++) {
           var minSrc = 'http://huwenzhe.com/Blog-Back-Up/min_photos/' + data.link[i];
-          var src = 'http://huwenzhe.com/Blog-Back-Up/photos/' + data.link[i];
+          var smallSrc = 'http://huwenzhe.com/Blog-Back-Up/photos/' + data.link[i];
           var type = data.type[i];
-          var target = src + (type === 'video' ? '.mp4' : '.jpg');
-          src += '';
+          var title = data.text[i];
+          var target = smallSrc + (type === 'video' ? '.mp4' : '.jpg');
+            smallSrc += '';
 
           liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
-                <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
-                  <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" src="' + minSrc + '" itemprop="thumbnail" onload="lzld(this)">\
+                <a href="' + minSrc + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + minSrc + '">\
+                  <img class="reward-img" data-type="' + type + '" data-src="' + smallSrc + '" src="' + smallSrc + '" title="'+ title +'" itemprop="thumbnail" onload="lzld(this)">\
                 </a>\
                 <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
             </figure>';
