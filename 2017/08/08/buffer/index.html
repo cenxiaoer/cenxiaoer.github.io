@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?72795d00f0f8823340c6bba6d9a8e7b2"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>把node捡起来之buffer | 岑小荋的幼稚园 | 英国谢菲尔德大学早期儿童教育学硕士&lt;br/&gt; AMI3-6主教18级学员&lt;br/&gt;儿童心理学爱好者&lt;br/&gt;就职于广州纽诺育儿教育科技有限公司-纽诺育儿睡眠顾问</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="node,buffer,buffer1,buffer2">
+    <meta name="description" content="最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，而是看现在的趋势，还有是自己的兴趣。js其实我觉得是一门很友好的语言，在踩过基础坑之后，觉得自己应该取扩展一些强数据类型的语言，一是想多了解，二是可以把自己道路拓宽，于">
+<meta name="keywords" content="node,buffer,buffer1,buffer2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把node捡起来之buffer">
+<meta property="og:url" content="http://yoursite.com/2017/08/08/buffer/index.html">
+<meta property="og:site_name" content="岑小荋的幼稚园">
+<meta property="og:description" content="最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，而是看现在的趋势，还有是自己的兴趣。js其实我觉得是一门很友好的语言，在踩过基础坑之后，觉得自己应该取扩展一些强数据类型的语言，一是想多了解，二是可以把自己道路拓宽，于是就在想，我应该适合学什么语言，公司现在后台有用java和php，虽然java">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-26T08:18:36.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把node捡起来之buffer">
+<meta name="twitter:description" content="最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，而是看现在的趋势，还有是自己的兴趣。js其实我觉得是一门很友好的语言，在踩过基础坑之后，觉得自己应该取扩展一些强数据类型的语言，一是想多了解，二是可以把自己道路拓宽，于是就在想，我应该适合学什么语言，公司现在后台有用java和php，虽然java">
+    
+        <link rel="alternate" type="application/atom+xml" title="岑小荋的幼稚园" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">岑小荋</h5>
+          <a href="mailto:616400578@qq.com" title="616400578@qq.com" class="mail">616400578@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/1920556877" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/cenxiaoer" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">把node捡起来之buffer</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">把node捡起来之buffer</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-07T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-08-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#"><span class="post-toc-number">1.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#buffer"><span class="post-toc-number">2.</span> <span class="post-toc-text">buffer</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#结构"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">结构</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Buffer对象"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">Buffer对象</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Buffer内存分配机制"><span class="post-toc-number">2.0.0.3.</span> <span class="post-toc-text">Buffer内存分配机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#总之"><span class="post-toc-number">2.0.0.3.1.</span> <span class="post-toc-text">总之</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Buffer的转换"><span class="post-toc-number">3.</span> <span class="post-toc-text">Buffer的转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#支持转换的类型"><span class="post-toc-number">3.0.0.1.</span> <span class="post-toc-text">支持转换的类型</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通过new-Buffer-str-encoding-创建buf-write-string-offset-length-encoding-写入（就是修改，不能新增）buf-toString-encoding-start-end-转换"><span class="post-toc-number">3.0.0.2.</span> <span class="post-toc-text">通过new Buffer(str, [encoding])创建buf.write(string,[offset],[length],[encoding])写入（就是修改，不能新增）buf.toString([encoding],[start],[end])转换</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#如-iconv-lite"><span class="post-toc-number">3.0.0.3.</span> <span class="post-toc-text">如:iconv-lite</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Buffer的拼接"><span class="post-toc-number">4.</span> <span class="post-toc-text">Buffer的拼接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#setEncoding-中的string-decoder"><span class="post-toc-number">4.0.0.1.</span> <span class="post-toc-text">setEncoding()中的string_decoder()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#于是想到了setEncoding-方法，"><span class="post-toc-number">4.0.0.1.1.</span> <span class="post-toc-text">于是想到了setEncoding()方法，</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正确的拼接方式"><span class="post-toc-number">5.</span> <span class="post-toc-text">正确的拼接方式</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-buffer"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">把node捡起来之buffer</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-08 00:00:00" datetime="2017-08-07T16:00:00.000Z"  itemprop="datePublished">2017-08-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<p>最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，而是看现在的趋势，还有是自己的兴趣。<br>js其实我觉得是一门很友好的语言，在踩过基础坑之后，觉得自己应该取扩展一些强数据类型的语言，一是想多了解，二是可以把自己道路拓宽，于是就在想，我应该适合学什么语言，公司现在后台有用java和php，虽然java是使用率最高的语言而php有一句话不是说么”世界上最好的语言是PHP”,但是也许是个人原因，我对php和java都不会感兴趣，java不感兴趣是因为当初找工作的时候总有java打电话，问有没有兴趣培训java的，所以我觉的会不会学java的人太多了？当然都是我自己偏见，而php呢，是因为身边很多用php的码农，我觉的用php好像很”随便”，这在我的理解就是随便的编码格式，随便的…好吧，其实都是我得偏见，最终选择Go语言是因为我在一年前就对它有一些了解，然后机缘巧合，找到了一些学习资料，然后就开始着手学习起来<br>…<br>…跑题了<br>…<br>为啥又捡起来node了呢，node这个作为js写的”后台”首先js的基础学习成本减少了，而且使用各种包又算式比较得心应手，上周看一篇js爬虫抓取数据的例子，然后自己正好有这个需求，于是就想再重开始把node过一遍。<br>–当然还有最主要的是我并不满足只满足现在公司的需求“只对str与DOM做一些操作”</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a>buffer</h2><hr>
+<p>像之前说的，js是很友好的，比如字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;123&quot;.length)//3</span><br><span class="line">console.log(&quot;你的名字&quot;.length)//4</span><br></pre></td></tr></table></figure></p>
+<p>在大多数语言中的汉字都是占3个字节的，而js只占1个</p>
+<p>因为在node中，应用需要处理网络协议.操作数据库.处理图片.接收上传文件等.还要处理大量的二进制数据，js中的str不能满足需求，所以就应运而生了Buffer对象；</p>
+<h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><p> Buffer是一个像Array结构的对象，它的元素为16进制的两位数（0~255），但是它主要用于操作字节；</p>
+<h5 id="Buffer对象"><a href="#Buffer对象" class="headerlink" title="Buffer对象"></a>Buffer对象</h5><p> 我们可以分配一个Buffer对象，指定它的字节；<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var buf = new Buffer(100)</span><br><span class="line">console.log(buf.length)</span><br></pre></td></tr></table></figure></p>
+<p> 当然我们也可以像“数组”一样继续操作它，如：<br>获取它第10个字节<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(buf[10])</span><br></pre></td></tr></table></figure></p>
+<p> 或者给它第10个字节赋值<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">buf[10] = 100</span><br><span class="line">console.log(buf)</span><br></pre></td></tr></table></figure></p>
+<p> <strong>这里有一个很重要的一点，当赋值范围不在0~255之间的时候，该值就会逐次加256，直到得到0~255之间的整数，当大于的时候逐次减256，如果是小数舍弃小数部分只保留整数部分</strong></p>
+<h5 id="Buffer内存分配机制"><a href="#Buffer内存分配机制" class="headerlink" title="Buffer内存分配机制"></a>Buffer内存分配机制</h5><p>Buffer对象的内存分配不是在V8的<a href="http://www.baidu.com" target="_blank" rel="noopener">堆内存</a>中，而是在Node的C++层面实现内存的申请的，也就是C++先去想系统内存申请一些内存给Node用，每次Node需要用的时候再由C++分配给Node,而不是Node每次需要用内存就去找系统要，这样系统压力很大的。<strong>（这里废话好像多，可以略过）</strong></p>
+<h6 id="总之"><a href="#总之" class="headerlink" title="总之"></a>总之</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var pool</span><br><span class="line">function allocPool()&#123;</span><br><span class="line">  pool = new SlowBuffer(Buffer.poolSize);</span><br><span class="line">  pool.used = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><div style="width:400px;height:100px;border:1px solid transparent;border-color:#eee #eee #eee transparent;text-align:center;line-height:100px;font-size:20px;position:relative;"><span style="font-size:14px;position:absolute;left:0;color:orange;height:100%;border-left:2px solid red;">&lt;-used:0</span>8&nbsp;BK的pool</div><br>Node采用的是<a href="http://www.baidu.com" target="_blank" rel="noopener">slab</a>内存分配机制，新建一个局部变量<a href="http://www.baidu.com" target="_blank" rel="noopener">pool</a>，处于分配状态的slab都指向它，slab具有三种状态</p>
+<ul>
+<li>full:完全分配状态</li>
+<li>partial:部分分配状态</li>
+<li>empty:没有分配状态<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var buf = new Buffer(8*1024)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Node以8KB为界限来区分是大对象和小对象(&lt;8KB就按照小对象的方式分配)</strong><br><br></p>
+<ul>
+<li>小对象：会记录起始长度（offset），以及当前pool使用的长度。<strong>(如果第二个Buffer大于剩下的空间，则再新建一个pool)</strong><br><br><br><div style="width:400px;height:100px;border:1px solid transparent;border-color:#eee #eee #eee transparent;text-align:center;line-height:100px;font-size:20px;position:relative;"><span style="font-size:14px;position:absolute;left:0;color:orange;height:100%;border-left:2px solid red;line-height:60px;z-index:10;">&lt;-offset:0</span><span style="font-size:14px;position:absolute;left:30px;color:lightgreen;height:100%;">Buffer1</span><span style="font-size:14px;position:absolute;line-height:60px;left:100px;color:orange;height:100%;border-left:2px solid red;">&lt;-used:2048</span>8&nbsp;BK的pool</div><br><br></li>
+<li>大对象：将会直接分配一个SlowBuffer作为slab单元，这个单元将会被这个大Buffer独占；</li>
+</ul>
+<hr>
+<h2 id="Buffer的转换"><a href="#Buffer的转换" class="headerlink" title="Buffer的转换"></a>Buffer的转换</h2><hr>
+<h5 id="支持转换的类型"><a href="#支持转换的类型" class="headerlink" title="支持转换的类型"></a>支持转换的类型</h5><p><br></p>
+<ul>
+<li>ASCII</li>
+<li>UTF-8</li>
+<li>UTF-16LE/UCS-2</li>
+<li>Base64</li>
+<li>Binary</li>
+<li><p>Hex</p>
+<h5 id="通过new-Buffer-str-encoding-创建buf-write-string-offset-length-encoding-写入（就是修改，不能新增）buf-toString-encoding-start-end-转换"><a href="#通过new-Buffer-str-encoding-创建buf-write-string-offset-length-encoding-写入（就是修改，不能新增）buf-toString-encoding-start-end-转换" class="headerlink" title="通过new Buffer(str, [encoding])创建buf.write(string,[offset],[length],[encoding])写入（就是修改，不能新增）buf.toString([encoding],[start],[end])转换"></a>通过<br><code>new Buffer(str, [encoding])</code>创建<br><code>buf.write(string,[offset],[length],[encoding])</code>写入<strong>（就是修改，不能新增）</strong><br><code>buf.toString([encoding],[start],[end])</code>转换</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var buf = new Buffer(&quot;我是&quot;,&quot;utf-8&quot;);</span><br><span class="line">console.log(buf);</span><br><span class="line">console.log(buf.toString(&quot;utf-8&quot;,0,6));</span><br></pre></td></tr></table></figure>
+<p><strong>比较遗憾的是Node的Buffer对象支持的编码类型有限，于是提供<code>Buffer.isEncoding([encoding])</code>的方法判断是否支持转换</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(Buffer.isEncoding(&quot;utf-8&quot;));//true</span><br><span class="line">console.log(Buffer.isEncoding(&quot;utf-16&quot;));//false [GBK.GB2312.BIG-5]等都不支持</span><br></pre></td></tr></table></figure>
+<p>当然在Node中不可转换的可以借助其他模块来完成转换。<br><strong><code>iconv</code>（C++调用libiconv库）</strong>和<strong><code>iconv-lite</code>（纯javascript）</strong>两个模块可以支持更多的编码转换</p>
+<h5 id="如-iconv-lite"><a href="#如-iconv-lite" class="headerlink" title="如:iconv-lite"></a>如:iconv-lite</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var iconv = require(&quot;iconv-lite&quot;);</span><br><span class="line">//Buffer 转字符串</span><br><span class="line">var str iconv.decode(buf,&quot;win1251&quot;)</span><br><span class="line">//字符串 转Buffer</span><br><span class="line">var buf = iconv.encode(&quot;im string&quot;,&quot;win1251&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Buffer的拼接"><a href="#Buffer的拼接" class="headerlink" title="Buffer的拼接"></a>Buffer的拼接</h2><hr>
+<p>先来一段从输入流中读取内容的示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var rs = fs.createReadStream(&apos;demo.go&apos;);</span><br><span class="line">var data = &apos;&apos;;</span><br><span class="line">rs.on(&quot;data&quot;,function (chunk) &#123;</span><br><span class="line">    console.log(chunk);</span><br><span class="line">    //等价于 data = data.toString() + chunk.toString()</span><br><span class="line">    data+=chunk</span><br><span class="line">&#125;);</span><br><span class="line">rs.on(&quot;end&quot;,function () &#123;</span><br><span class="line">      console.log(data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样子写没有问题，会输出<code>demo.go</code>中的Go语言的代码，但是如果换成不能解析的就会乱码，像中文，图片，视频等，因为这里的<strong>Buffer</strong>已经当字符串处理了，我们用的<code>+=</code>,等同于<code>data = data.toString() + chunk.toString()</code>,因为在中文场景下Buffer的长度受到了影响，必须还是刚才的代码，我们重现一下报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var rs = fs.createReadStream(&apos;demo.go&apos;,&#123;highWaterMark:11&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>限制了一下每次读取的长度就会产生乱码<br><strong>因为中文在utf-8中显示三个字节，而截断之后只要遇到一个汉字被截断之后每个字节就会以�来显示</strong></p>
+<h5 id="setEncoding-中的string-decoder"><a href="#setEncoding-中的string-decoder" class="headerlink" title="setEncoding()中的string_decoder()"></a><code>setEncoding()</code>中的<code>string_decoder()</code></h5><p>上面的Buffer拼接出现乱码确实令人头痛，当然Buffer长度越大也就越不会出现上面的问题，但是这并不是解决办法，这个问题是不可以忽视的。</p>
+<h6 id="于是想到了setEncoding-方法，"><a href="#于是想到了setEncoding-方法，" class="headerlink" title="于是想到了setEncoding()方法，"></a>于是想到了<code>setEncoding()</code>方法，</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var rs = fs.createReadStream(&apos;main.go&apos;,&#123;highWaterMark:11&#125;);</span><br><span class="line">rs.setEncoding(&quot;utf-8&quot;)</span><br></pre></td></tr></table></figure>
+<p>这下就可以完整输出中文了<br><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var StringDecoder = require(&apos;string_decoder&apos;).StringDecoder;</span><br><span class="line">var decoder = new StringDecoder(&apos;utf-8&apos;);</span><br><span class="line"></span><br><span class="line">var buf1 = new Buffer([0xE5, 0xBA, 0xBA, 0xBA, 0xBA, 0xBA, 0xBA])//这个buffer请忽略</span><br><span class="line">console.log(decoder.write(buf1));</span><br><span class="line">var buf2 = new Buffer([0xE5, 0xBA, 0xBA, 0xBA])//这个buffer请忽略</span><br><span class="line">console.log(decoder.write(buf2));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>原理：在调用<code>setEncoding</code>方法时，可读流内部设置了一个decoder对象，该对象来于<code>string_decoder</code>模块<code>StringDecoder</code>的实例对象，它神奇的地方就在于它知道宽字节字符串在<code>utf-8</code>中是以3个字节的方式储存，所以在第一次<code>write()</code>的时候只把转成的字符，而<strong>“半个”</strong>字符中的字节保存在StringDecoder的实例内部，第二次<code>write()</code>的时候将剩余的字节与第二次开始的字节合并成一个完整的字节在第二次输出。<br><br><br><strong>虽然<code>string_decoder</code>模块很奇妙，但是它并不是万能的，它目前只能处理<code>utf-8</code>.<code>Base64</code>和<code>UCS-2/UTF-16LE</code>这三种编码，虽然他能解决大部分编码问题，但不能从根本上解决该问题</strong></p>
+</blockquote>
+<hr>
+<h2 id="正确的拼接方式"><a href="#正确的拼接方式" class="headerlink" title="正确的拼接方式"></a>正确的拼接方式</h2><hr>
+<p>舍弃了<code>setEncoding</code>之后，解决方法是把Buffer小对象拼接橙一个Buffer大对象。然后用<code>iconv-lite</code>一类的模块进行转换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&quot;fs&quot;);</span><br><span class="line">var iconv = require(&quot;iconv-lite&quot;);</span><br><span class="line">var rs = fs.createReadStream(&apos;sh.go&apos;,&#123;highWaterMark:11&#125;);</span><br><span class="line">var size = 0;</span><br><span class="line">var chunks = [];</span><br><span class="line">rs.on(&quot;data&quot;,function (chunk) &#123;</span><br><span class="line">    chunks.push(chunk);</span><br><span class="line">    size+=chunk.length</span><br><span class="line">&#125;);</span><br><span class="line">rs.on(&quot;end&quot;,function () &#123;</span><br><span class="line">    var buf = Buffer.concat(chunks,size);</span><br><span class="line">    var str = iconv.decode(buf,&quot;utf-8&quot;);</span><br><span class="line">    console.log(str);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Buffer.concat方法和js数组的拼接<code>.concat</code>方法不相同，前者是封装了从小Buffer对象向大Buffer对象复制的过程。源码确实写得很细腻，如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Buffer.concat = function(list,length)&#123;</span><br><span class="line">  if(!Array.isArray(list))&#123;//判断传入list是否是数组</span><br><span class="line">    throw new Error(&quot;Usage: Buffer.concat(list,[length])&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if(list.length == 0)&#123;</span><br><span class="line">    return new Buffer(0);//传入数组为空时创建一个空Buffer</span><br><span class="line">  &#125;else if(list.length === 1)&#123;</span><br><span class="line">      return list[0];//传入数组为1的时直接返回第一个Buffer作为最终Buffer</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if(typeof length !== &apos;number&apos;)&#123;//如果未传入length，或者传入的不是&apos;number&apos;类型，自循环获取</span><br><span class="line">    length = 0;</span><br><span class="line">    for(var i = 0; i &lt;list.length; i++)&#123;</span><br><span class="line">      var buf = list[i];</span><br><span class="line">      length += buf.length;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var buffer = new Buffer(length);//创建一个所有子Buffer总长的Buffer;</span><br><span class="line">  var pos = 0;</span><br><span class="line">  for(var i = 0; i &lt; list.length; i++)&#123;</span><br><span class="line">    var buf = list[i];</span><br><span class="line">    buf.copy(buffer,pos);//*使用copy方法复制子项插入到总Buffer中，并且制定插入的位置</span><br><span class="line">    pos+=buf.length;//*每次插入之后把刚才copy子项的长度记录，保证下次插入位置正确</span><br><span class="line">  &#125;</span><br><span class="line">  return buffer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>总结，摆脱string的思维定势，注意Buffer与Sting之间的差异，后续还有Buffer与性能，暂时还没有整理；</strong></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-26T08:18:36.805Z" itemprop="dateUpdated">2018-06-26 16:18:36</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/08/08/buffer/" target="_blank" rel="external">http://yoursite.com/2017/08/08/buffer/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="岑小荋">
+            岑小荋
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/buffer/">buffer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/buffer1/">buffer1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/buffer2/">buffer2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/08/08/buffer/&title=《把node捡起来之buffer》 — 岑小荋的幼稚园&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/08/08/buffer/&title=《把node捡起来之buffer》 — 岑小荋的幼稚园&source=
+最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/08/08/buffer/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《把node捡起来之buffer》 — 岑小荋的幼稚园&url=http://yoursite.com/2017/08/08/buffer/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/08/08/buffer/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/05/被遗忘的关键第四期/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">被遗忘的关键第四期</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/01/hello-world/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Hello World</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 暂时写在这里引入，之后放在全局 -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "akn3kbG9bFVRaqucNiS3hqiG-gzGzoHsz",
+            appKey: "MVrbPIeuzKGFpY9ah1QfLOmD",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+        window.onload = function () {
+            $(".vhead").each(function (i,v) {
+                //浏览器图标
+                if($(this).find(".vsys").eq(0).text().toUpperCase().includes('CHROME')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/chrome.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('UC')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/UC浏览器.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('OPERA')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/opera.svg"/>');
+                }
+                //系统图标
+                if($(this).find(".vsys").eq(1).text().toUpperCase().includes('WINDOWS')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/windows.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('APPLE')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/apple.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('LINUX')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/linux.svg"/>');
+                }
+            })
+        }
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/avatar.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/avatar.jpg" data-alipay="/img/avatar.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>岑小荋 &copy; 2015 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备1234556号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/08/08/buffer/&title=《把node捡起来之buffer》 — 岑小荋的幼稚园&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/08/08/buffer/&title=《把node捡起来之buffer》 — 岑小荋的幼稚园&source=
+最近感觉很痛苦，再别人学习新语言新框架的时候，自己却在原地踏步，实在是对自己感到可悲，于是开始着手学习一门后台语言，学习后天语言并不是一时兴起想去学的，..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/08/08/buffer/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《把node捡起来之buffer》 — 岑小荋的幼稚园&url=http://yoursite.com/2017/08/08/buffer/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/08/08/buffer/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3aS24CMRAFQO5/aSJlRRYzec92GhSVVwgBrmHR6t/jEZ/n93l9/frO1WeuPn/1C8cOLi7uNvd5e+6vT+j36NyAi4s7z90JXmsPc0X/xYaLi/th3LPfwsXF/R/cszUWLi7u53OT4icpYO6vbxMjXFzcd3F3gs6p13/e38XFxT00lciD2lroqW/HxcUd4a61PNpmaN4iicIcLi7uCLctb5KWaFL8tBJcXNwZbr4ylaQ7SbBr2ys/3sHFxR3ktoOTNXqePF3+cbi4uCPcdpTSlkx5EVUkTLi4uH/MTZ7mvpg5tZZRTINxcXEHuXnYahOg/UYJLi7uu7hJudK2M/I/IroFFxd3hJsHlLUr2yQJFxf3E7hJSGrHLfsrF4ujFFxc3EPcA93WpQFJu6iBi4s7yc1XJXZWrNqB7qUBFxd3kLvWmdzvbbYjFlxc3EluftpBaRLaisfAxcUd4bYBZadhuvabxQgWFxf3KLdd2cyfO2+L5OUQLi7uJDdPR/LWRt5arfu7uLi4H8NNipY8uckD2daGCC4u7gg3aYDmaxZFcoOLizvO3R+4rhU/7VAWFxd3hrszNN0JefnCFi4u7iD3CzZVdp3OVSquAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '(‧_‧？) 人呢？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●-● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
