@@ -4703,12 +4703,16 @@ pre .javascript .function {
   position: relative;
   min-width: 56px;
 }
+.search-wrap.in {
+  background: rgba(1, 1, 1, 0.44);
+}
 .search-wrap.in .search-input {
   width: 320px;
   opacity: 1;
 }
 .search-wrap.in #search {
   color: #c5cae9;
+  background: transparent;
 }
 .search-wrap .search-input {
   position: relative;
@@ -4726,7 +4730,7 @@ pre .javascript .function {
   transition: 0.2s ease-in-out;
 }
 .search-wrap .search-input::-webkit-input-placeholder {
-  color: #c5cae9;
+  color: #fff;
 }
 .search-wrap .header-icon {
   position: absolute;
@@ -4818,13 +4822,22 @@ pre .javascript .function {
     z-index: 10;
     width: 100%;
     padding: 0 16px 0 56px;
-    background: #3f51b5;
+    background: transparent;
   }
   .search-wrap.in .search-input {
     width: 100%;
   }
   .search-wrap.in #back {
     display: block;
+  }
+  .searchOpen {
+    background: rgba(1, 1, 1, 0.44);
+  }
+  .searchOpen #back {
+    background: transparent;
+  }
+  .searchOpen .hide {
+    display: none!important;
   }
   .search-panel {
     z-index: 28;

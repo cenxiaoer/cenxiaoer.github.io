@@ -4,7 +4,12 @@
         even = G.BLOG.even,
         $ = G.BLOG.$,
         searchIco = $('#search'),
+        headerId = $('#header'),
         searchWrap = $('#search-wrap'),
+        themeToggle = $('#themeToggle'),
+        menuToggle = $('#menu-toggle'),
+        menuShare = $('#menuShare'),
+        headerTitle = $('#headerTitle'),
         keyInput = $('#key'),
         back = $('#back'),
         searchPanel = $('#search-panel'),
@@ -119,7 +124,12 @@
 
 
     searchIco.addEventListener(even, function () {
+        headerId.classList.toggle('searchOpen');
         searchWrap.classList.toggle('in');
+        headerTitle.classList.toggle('hide');
+        menuToggle.classList.toggle('hide');
+        themeToggle.classList.toggle('hide');
+        menuShare.classList.toggle('hide');
         keyInput.value = '';
         searchWrap.classList.contains('in') ? keyInput.focus() : keyInput.blur();
     });

@@ -232,8 +232,6 @@
         },
         moon: function () {
             var moonWrap = $('html');
-            console.log('moonWrap')
-            console.log(moonWrap)
             function addMoonWrap() {
                 moonWrap.classList.toggle('night-mode');
                 if(!!$('html').className.match( new RegExp( "(\\s|^)" + 'night-mode' + "(\\s|$)"))){
@@ -250,9 +248,14 @@
         },
         search: function () {
             var searchWrap = $('#search-wrap');
+            var themeToggle = $('#themeToggle');
+            var menuShare = $('#menuShare');
 
             function toggleSearch() {
+                console.log(1111)
                 searchWrap.classList.toggle('in');
+                themeToggle.classList.toggle('hide');
+                menuShare.classList.toggle('hide');
             }
 
             $('#search').addEventListener(even, toggleSearch);
