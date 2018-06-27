@@ -4815,6 +4815,9 @@ pre .javascript .function {
   overflow: hidden;
 }
 @media screen and (max-width: 760px) {
+  .fixed .search-wrap.in {
+    background: transparent;
+  }
   .search-wrap.in {
     position: absolute;
     top: 0;
