@@ -4699,12 +4699,12 @@ pre .javascript .function {
     display: none;
   }
 }
+.fixed .search-wrap.in {
+  background: rgba(1, 1, 1, 0.44);
+}
 .search-wrap {
   position: relative;
   min-width: 56px;
-}
-.search-wrap.in {
-  background: rgba(1, 1, 1, 0.44);
 }
 .search-wrap.in .search-input {
   width: 320px;
